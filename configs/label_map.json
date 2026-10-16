@@ -1,0 +1,14 @@
+{
+  "labels": [
+    "hi-IN",
+    "en-IN",
+    "pa-IN",
+    "none"
+  ],
+  "rules": {
+    "hi-IN": "Hindi-only or Hindi-English Hinglish, when genuine Punjabi is absent",
+    "en-IN": "English-only",
+    "pa-IN": "Punjabi-only or any genuine Punjabi-containing mix",
+    "none": "Unsupported Indian language solo or mixed with English"
+  }
+}
