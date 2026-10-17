@@ -1,0 +1,10 @@
+split,label,rows
+test,en-IN,1993
+test,hi-IN,4084
+test,none,4000
+train,en-IN,15960
+train,hi-IN,31963
+train,none,32000
+validation,en-IN,2047
+validation,hi-IN,3953
+validation,none,4000
