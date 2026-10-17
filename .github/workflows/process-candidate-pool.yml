@@ -9,6 +9,8 @@ on:
       - ".github/workflows/process-candidate-pool.yml"
       - "scripts/process_multilingual_candidates.py"
       - "data/interim/indiccmix_candidates/multilingual_dataset_candidates.zip"
+      - "data/synthetic/punjabi_hindi/**"
+      - "data/synthetic/marathi_hindi/**"
 
 permissions:
   contents: write
@@ -36,7 +38,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/processed/language_classifier_v1/*.csv data/processed/language_classifier_v1/*.gz data/processed/language_classifier_v1/manifest.json
+          git add data/processed/language_classifier_v1/*.csv data/processed/language_classifier_v1/*.gz data/processed/language_classifier_v1/manifest.json data/processed/language_classifier_v1/README.md
           if git diff --cached --quiet; then
             echo "No generated dataset changes to commit."
           else
