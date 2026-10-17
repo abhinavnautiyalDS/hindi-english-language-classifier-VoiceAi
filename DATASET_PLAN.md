@@ -1,87 +1,74 @@
-# Dataset Plan and Row Targets
+# Multilingual Mixed-Script Dataset Plan
 
-## Label contract
+## Objective
+Prepare a low-latency voice-agent language identifier with 12 output labels: 11 supported tags and `none`. Dataset target: 500,000 candidate examples across 26 categories. Targets are not achieved counts; rows remain unapproved until quality, licensing, and leakage checks pass.
 
-| Label | Rule |
-|---|---|
-| `hi-IN` | Hindi-only and Hindi-English Hinglish, provided genuine Punjabi is absent |
-| `en-IN` | English-only |
-| `pa-IN` | Punjabi-only or any genuine Punjabi-containing mix |
-| `none` | Unsupported languages, solo or mixed with English |
+## Labels and category targets
 
-This is utterance-level language classification, not script classification.
+Every category targets 20,000 examples except the two `none` categories, which target 10,000 each.
 
-## A. Hindi and English
+| Category | Label | Target |
+|---|---|---:|
+| English-only | `en-IN` | 20,000 |
+| Hindi-only (Devanagari) | `hi-IN` | 20,000 |
+| Hindi-English Hinglish mixed-script | `hi-IN` | 20,000 |
+| Punjabi-only | `pa-IN` | 20,000 |
+| Punjabi-Hindi | `pa-IN` | 20,000 |
+| Punjabi-English mixed-script | `pa-IN` | 20,000 |
+| Punjabi-Hindi-English | `pa-IN` | 20,000 |
+| Bengali-only | `bn-IN` | 20,000 |
+| Bengali-English mixed-script | `bn-IN` | 20,000 |
+| Gujarati-only | `gu-IN` | 20,000 |
+| Gujarati-English mixed-script | `gu-IN` | 20,000 |
+| Kannada-only | `kn-IN` | 20,000 |
+| Kannada-English mixed-script | `kn-IN` | 20,000 |
+| Malayalam-only | `ml-IN` | 20,000 |
+| Malayalam-English mixed-script | `ml-IN` | 20,000 |
+| Marathi-only | `mr-IN` | 20,000 |
+| Marathi-English mixed-script | `mr-IN` | 20,000 |
+| Marathi-Hindi | `mr-IN` | 20,000 |
+| Telugu-only | `te-IN` | 20,000 |
+| Telugu-English mixed-script | `te-IN` | 20,000 |
+| Assamese-only | `as-IN` | 20,000 |
+| Assamese-English mixed-script | `as-IN` | 20,000 |
+| Tamil-only | `ta-IN` | 20,000 |
+| Tamil-English mixed-script | `ta-IN` | 20,000 |
+| Unsupported language only | `none` | 10,000 |
+| Unsupported language + English | `none` | 10,000 |
 
-| Data type | Target | Source | Filtering requirements | Label |
-|---|---:|---|---|---|
-| Hindi-only, Devanagari | 20,000 | Trilingual Hinglish Corpus `hindi`; HinGE verified Hindi | Exclude Hinglish, Romanized Hindi, and other-language rows | `hi-IN` |
-| English-only, Latin | 20,000 | Trilingual Hinglish Corpus `english`; HinGE verified English | Exclude code-mixed and other-language rows | `en-IN` |
-| Hindi-English Hinglish | 20,000 | COMI-LINGUA | Keep genuine mixed utterances, including mixed-script words; review annotation and deduplicate | `hi-IN` |
+**Total target: 500,000.** The `none` class is 20,000 combined across diverse unsupported languages, not 20,000 per language.
 
-## B. Punjabi combinations
+## Non-negotiable mixed-script rule
 
-| Data type | Target | Source plan | Limitations / action | Label |
-|---|---:|---|---|---|
-| Punjabi-only | 20,000 | Punjabi Gurmukhi Grammar Correction Corpus, plus other licensed Punjabi corpora if needed | Inspect schema/license; grammar-correction pairs may not contain enough unique utterances | `pa-IN` |
-| Punjabi-Hindi | 20,000 | Synthetic Punjabi-Hindi CSV, reviewed and audited | Synthetic; deduplicate; keep every script variant of one base utterance in the same split | `pa-IN` |
-| Punjabi-English | 20,000 | AI4Bharat Indic-Glossaries as a vocabulary resource plus verified mixed utterances or reviewed generation | Glossary entries are not utterances; do not count raw glossary rows as conversations | `pa-IN` |
-| Punjabi-Hindi-English | 20,000 | Reviewed synthetic generation and/or licensed real code-mixed sources | Verify all three languages are genuinely present | `pa-IN` |
+For every supported-language + English combo, one utterance must contain BOTH:
+- text in the language's native script, and
+- English text written in Latin script.
 
-## C. Unsupported Indian languages
+This applies to Hinglish (Devanagari + Latin), Punjabi-English (Gurmukhi + Latin), Bengali-English (Bengali + Latin), Gujarati-English, Kannada-English, Malayalam-English, Marathi-English (Devanagari + Latin), Telugu-English, Assamese-English, and Tamil-English. Latin-only romanization does not qualify for these specific mixed-script categories. A brand name, acronym, or URL alone is not sufficient evidence of English code-switching.
 
-For each language below, target 20,000 solo utterances and 20,000 language-English mixed utterances. Both categories map to `none`. Track native and Romanized scripts separately when available.
+## Sources and planned use
 
-| Language | Solo target | + English target | Candidate source/action |
-|---|---:|---:|---|
-| Assamese | 20,000 | 20,000 | IndicLID candidate rows and licensed Assamese corpus; separately validate English-mixed examples |
-| Bengali (Bangla) | 20,000 | 20,000 | IndicLID candidate rows and licensed Bengali corpus; separately validate English-mixed examples |
-| Bodo | 20,000 | 20,000 | IndicLID candidate rows and licensed Bodo corpus; separately validate English-mixed examples |
-| Dogri | 20,000 | 20,000 | IndicLID candidate rows and licensed Dogri corpus; separately validate English-mixed examples |
-| Gujarati | 20,000 | 20,000 | IndicLID candidate rows and licensed Gujarati corpus; separately validate English-mixed examples |
-| Kannada | 20,000 | 20,000 | IndicLID candidate rows and licensed Kannada corpus; separately validate English-mixed examples |
-| Kashmiri | 20,000 | 20,000 | IndicLID candidate rows and licensed Kashmiri corpus; separately validate English-mixed examples |
-| Konkani | 20,000 | 20,000 | IndicLID candidate rows and licensed Konkani corpus; separately validate English-mixed examples |
-| Maithili | 20,000 | 20,000 | IndicLID candidate rows and licensed Maithili corpus; separately validate English-mixed examples |
-| Malayalam | 20,000 | 20,000 | IndicLID candidate rows and licensed Malayalam corpus; separately validate English-mixed examples |
-| Manipuri (Meitei) | 20,000 | 20,000 | IndicLID candidate rows and licensed Manipuri corpus; separately validate English-mixed examples |
-| Marathi | 20,000 | 20,000 | IndicLID candidate rows and licensed Marathi corpus; separately validate English-mixed examples |
-| Nepali | 20,000 | 20,000 | IndicLID candidate rows and licensed Nepali corpus; separately validate English-mixed examples |
-| Odia | 20,000 | 20,000 | IndicLID candidate rows and licensed Odia corpus; separately validate English-mixed examples |
-| Sanskrit | 20,000 | 20,000 | IndicLID candidate rows and licensed Sanskrit corpus; separately validate English-mixed examples |
-| Santali | 20,000 | 20,000 | IndicLID candidate rows and licensed Santali corpus; separately validate English-mixed examples |
-| Sindhi | 20,000 | 20,000 | IndicLID candidate rows and licensed Sindhi corpus; separately validate English-mixed examples |
-| Tamil | 20,000 | 20,000 | IndicLID candidate rows and licensed Tamil corpus; separately validate English-mixed examples |
-| Telugu | 20,000 | 20,000 | IndicLID candidate rows and licensed Telugu corpus; separately validate English-mixed examples |
-| Urdu | 20,000 | 20,000 | IndicLID candidate rows and licensed Urdu corpus; separately validate English-mixed examples |
+- Trilingual Hinglish Corpus: English and Hindi columns for language-only candidate pools; do not blindly accept its Hinglish column. Preserve source splits and paired row provenance. Reported source license has commercial-use implications; verify before use.
+- HinGE: English and Hindi candidates after language/script filtering; verify current license and split rules.
+- COMI-LINGUA: Hindi-English code-mixing candidates; review annotator agreement and domain suitability; protect official test split.
+- Punjabi Gurmukhi Grammar Correction Corpus: Punjabi seed only. Related incorrect/corrected pairs must stay in one split group.
+- AI4Bharat Indic-Glossaries: vocabulary seeds only where language pairs exist; glossary entries are not automatically natural utterances.
+- BnSentMix: selected as a candidate source for Bengali-English, but it must pass the strict Bengali-script + Latin-script gate. It was built for sentiment analysis; ignore sentiment labels for language ID. Verify the current license and upstream content terms.
+- Punjabi-Hindi and Marathi-Hindi synthetic data: mark provenance, group by template/generator, and do not use synthetic-only evaluation.
+- Other language categories: source licensed text/code-mix corpora and preserve source URLs, licenses, row IDs, splits, and groups.
 
-IndicLID is a language-identification resource, not guaranteed conversational or code-mixed data. Record whether each row is source text, a transformed row or synthetic.
+## Required row metadata
+`text,label,language_category,source_dataset,source_url,source_row_id,group_id,source_split,is_synthetic,review_status,license_status`
 
-## Target count arithmetic
+## Quality gates before fine-tuning
+1. Verify labels by language, not script alone.
+2. Apply both-script gate to every language-English category and manually confirm real code-switching.
+3. Deduplicate normalized text and audit near-duplicates.
+4. Keep translations, correction pairs, template siblings, and near-duplicates group-safe across splits.
+5. Keep official source test sets protected.
+6. Verify source licenses/attribution and do not redistribute data without permission.
+7. Evaluate on real voice/call-style examples and report per-class precision, recall, F1, and confusion matrix.
+8. Keep realistic deployment evaluation separate from balanced training targets.
 
-| Group | Categories | Rows/category | Target rows |
-|---|---:|---:|---:|
-| Hindi-only, English-only, Hindi-English | 3 | 20,000 | 60,000 |
-| Punjabi-only and 3 Punjabi combinations | 4 | 20,000 | 80,000 |
-| 20 unsupported languages, solo | 20 | 20,000 | 400,000 |
-| 20 unsupported languages + English | 20 | 20,000 | 400,000 |
-| **Total** | **47** | — | **940,000** |
-
-All figures are targets. Do not pad categories with duplicates to reach them. Record shortfalls and find licensed supplementary data or explicitly marked, reviewed synthetic examples.
-
-## Canonical schema
-
-`text,label,language_type,script_type,source_dataset,source_row_id,is_synthetic,group_id,split,review_status`
-
-Suggested `language_type` values include `hi_solo`, `en_solo`, `hi_en_mix`, `pa_solo`, `pa_hi_mix`, `pa_en_mix`, `pa_hi_en_mix`, `other_ta_solo`, and `other_ta_en_mix`.
-
-## Data quality and split rules
-
-1. Preserve source and license provenance.
-2. Normalize Unicode and whitespace without changing language identity.
-3. Detect duplicates after normalization.
-4. Group translation pairs, synthetic siblings and script variants before splitting.
-5. Keep a locked test set; never tune generation templates against it.
-6. Audit samples from every source and language type, ideally with a fluent/native reviewer.
-7. Report counts by final label, language type, script, source, and real/synthetic.
-8. Exclude or review ambiguous utterances rather than guessing.
+## Status
+This file describes targets and collection rules. It does not certify that data has been collected or approved. Read `docs/DATASET_PREPARATION_STATUS.md` and `data/manifests/category_tracker.csv` for current status.
