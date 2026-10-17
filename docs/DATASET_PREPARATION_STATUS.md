@@ -49,3 +49,11 @@ Every language-English category requires both native-script text and Latin-scrip
 - [ ] No source-test or group leakage
 - [ ] Real voice/call-style independent evaluation set ready
 - [ ] Per-class precision, recall, F1, confusion matrix and CPU latency measured
+
+
+## Update — source selection and monolingual collection notebook
+
+- Reviewed the BnSentMix source description. The paper describes Bengali-English code-mixed text written in English characters; this does **not** satisfy our strict Bengali-native-script + Latin-English rule by default. It is now marked research-only, not an accepted source for that category unless row-level evidence proves both scripts are present.
+- Selected AI4Bharat IndicCorpV2 as a candidate source for monolingual language-only pools and diverse unsupported-language examples. Its dataset card reports CC-0 for created data, but license metadata/upstream terms must be rechecked. The corpus is large and mainly web-derived, so the notebook streams subsets rather than downloading the entire corpus.
+- Added `notebooks/indiccorp_v2_monolingual_candidate_collection.ipynb` to stream 20,000 candidate rows per supported language-only category. The notebook has not been run in this environment; no new rows are counted as collected yet.
+- This source cannot fill any mixed-script language-English category. Those require actual code-mixed data containing native script + Latin English, and must pass the two-script gate plus language review.
