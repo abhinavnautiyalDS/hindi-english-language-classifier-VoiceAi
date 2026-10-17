@@ -84,7 +84,7 @@ def main():
     pa_hi_en["source"] = "synthetic_template_generator_v1_punjabi_hindi_plus_english"
     pa_hi_en["source_file"] = "generated_from_punjabi_hindi_synthetic_candidates"
     pa_hi_en["source_row_id"] = pa_hi_en.source_row_id.astype(str) + "_enmix"
-    pa_hi_en["source_group_id"] = pa_hi_en.source_group_id.astype(str) + "_enmix"
+    pa_hi_en["source_group_id"] = pa_hi_en.source_group_id.astype(str)
     pa_hi_en["review_status"] = "synthetic_unreviewed"; pa_hi_en["is_synthetic"] = True
     pa_hi_en["generator"] = "english_segment_insertion_v1"
 
