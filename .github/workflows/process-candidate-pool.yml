@@ -1,0 +1,45 @@
+name: Process multilingual candidate pool
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dataset-prep/multilingual-collection
+    paths:
+      - ".github/workflows/process-candidate-pool.yml"
+      - "scripts/process_multilingual_candidates.py"
+      - "data/interim/indiccmix_candidates/multilingual_dataset_candidates.zip"
+
+permissions:
+  contents: write
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out dataset branch
+        uses: actions/checkout@v4
+        with:
+          ref: dataset-prep/multilingual-collection
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install processing dependencies
+        run: pip install pandas numpy
+      - name: Process candidate pool
+        run: |
+          python scripts/process_multilingual_candidates.py \
+            --input-zip data/interim/indiccmix_candidates/multilingual_dataset_candidates.zip \
+            --output-dir data/processed/language_classifier_v1
+      - name: Commit processed dataset
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/processed/language_classifier_v1/*.csv data/processed/language_classifier_v1/*.gz data/processed/language_classifier_v1/manifest.json
+          if git diff --cached --quiet; then
+            echo "No generated dataset changes to commit."
+          else
+            git commit -m "Add processed multilingual candidate dataset [skip ci]"
+            git push origin HEAD:dataset-prep/multilingual-collection
+          fi
