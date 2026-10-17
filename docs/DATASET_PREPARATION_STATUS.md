@@ -57,3 +57,10 @@ Every language-English category requires both native-script text and Latin-scrip
 - Selected AI4Bharat IndicCorpV2 as a candidate source for monolingual language-only pools and diverse unsupported-language examples. Its dataset card reports CC-0 for created data, but license metadata/upstream terms must be rechecked. The corpus is large and mainly web-derived, so the notebook streams subsets rather than downloading the entire corpus.
 - Added `notebooks/indiccorp_v2_monolingual_candidate_collection.ipynb` to stream 20,000 candidate rows per supported language-only category. The notebook has not been run in this environment; no new rows are counted as collected yet.
 - This source cannot fill any mixed-script language-English category. Those require actual code-mixed data containing native script + Latin English, and must pass the two-script gate plus language review.
+
+## Update — mixed-script source identified
+
+- Added `notebooks/indiccmix_mixed_script_candidate_collection.ipynb` for AI4Bharat IndicCMix. Its dataset card reports an MIT license, 11 Indic languages, and a `native_script_codemixed` field intended to preserve Indic native script plus Latin-script English. Re-check current license/provenance before commercial use. Source: https://huggingface.co/datasets/ai4bharat/IndicCMix
+- The notebook filters for both a language-specific native-script block and Latin letters in the same utterance, writes candidate-only CSVs, and preserves source row/group IDs. It does not approve labels or create final splits.
+- Important caveat: the dataset is translation-derived and its audio is English TTS, not natural code-mixed voice-call audio. Treat it as text candidate/augmentation data only, review linguistic quality and domain suitability, and keep related English-source sentence variants in the same split to prevent leakage.
+- The notebook has **not** been executed here. No IndicCMix rows are counted as collected or approved yet.
