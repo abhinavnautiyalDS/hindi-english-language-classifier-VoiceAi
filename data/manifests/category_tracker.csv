@@ -1,27 +1,27 @@
 category,label,target_rows,candidate_rows_known_locally,approved_rows,status
-English-only,en-IN,20000,17909,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
+English-only,en-IN,20000,17909,0,candidate pool exists; label and quality review pending
 Hindi-only Devanagari,hi-IN,20000,14066,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
 Hindi-English Hinglish mixed-script,hi-IN,20000,14964,0,COMI-LINGUA candidate pool; quality/domain review pending
-Punjabi-only,pa-IN,20000,2280,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
+Punjabi-only,pa-IN,20000,2280,0,IndicCorpV2 selected for streamed candidate collection; existing grammar-correction seed is narrow-domain
 Punjabi-Hindi,pa-IN,20000,20000,0,synthetic candidates exist; audit and human review required
 Punjabi-English mixed-script,pa-IN,20000,0,0,not collected/verified
 Punjabi-Hindi-English,pa-IN,20000,0,0,not collected/verified
-Bengali-only,bn-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
-Bengali-English mixed-script,bn-IN,20000,0,0,BnSentMix not accepted by default; source description says Latin-script code-mix; need a true Bengali+Latin source
-Gujarati-only,gu-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
+Bengali-only,bn-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
+Bengali-English mixed-script,bn-IN,20000,0,0,BnSentMix not accepted by default; source describes Latin-script code-mix; need true Bengali-script plus Latin-English examples
+Gujarati-only,gu-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
 Gujarati-English mixed-script,gu-IN,20000,0,0,not collected/verified
-Kannada-only,kn-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
+Kannada-only,kn-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
 Kannada-English mixed-script,kn-IN,20000,0,0,not collected/verified
-Malayalam-only,ml-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
+Malayalam-only,ml-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
 Malayalam-English mixed-script,ml-IN,20000,0,0,not collected/verified
-Marathi-only,mr-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
+Marathi-only,mr-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
 Marathi-English mixed-script,mr-IN,20000,0,0,not collected/verified
 Marathi-Hindi,mr-IN,20000,0,0,synthetic generation planned; not verified
-Telugu-only,te-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
+Telugu-only,te-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
 Telugu-English mixed-script,te-IN,20000,0,0,not collected/verified
-Assamese-only,as-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
+Assamese-only,as-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; script range overlaps Bengali
 Assamese-English mixed-script,as-IN,20000,0,0,not collected/verified
-Tamil-only,ta-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
+Tamil-only,ta-IN,20000,0,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
 Tamil-English mixed-script,ta-IN,20000,0,0,not collected/verified
-Unsupported-language-only,none,10000,0,0,diverse unsupported-language sources not collected/verified
-Unsupported-language-English,none,10000,0,0,diverse unsupported-language-English mixed-script sources not collected/verified
+Unsupported-language-only,none,10000,0,0,diverse unsupported-language source subsets not yet collected
+Unsupported-language-English,none,10000,0,0,mixed-script sources not yet collected; require native script plus Latin English
