@@ -64,3 +64,11 @@ Every language-English category requires both native-script text and Latin-scrip
 - The notebook filters for both a language-specific native-script block and Latin letters in the same utterance, writes candidate-only CSVs, and preserves source row/group IDs. It does not approve labels or create final splits.
 - Important caveat: the dataset is translation-derived and its audio is English TTS, not natural code-mixed voice-call audio. Treat it as text candidate/augmentation data only, review linguistic quality and domain suitability, and keep related English-source sentence variants in the same split to prevent leakage.
 - The notebook has **not** been executed here. No IndicCMix rows are counted as collected or approved yet.
+
+
+## Update — 2026-10-17 Colab collection and synthetic candidates
+
+- Colab collection completed: 440,000 unreviewed candidate rows across 23 categories, with 0 exact duplicates reported by the pipeline's exact-dedup rule. This is a local ZIP upload, not yet committed as raw data in this branch.
+- Reason raw ZIP is not committed yet: it contains source-derived text from IndicCMix and the repository's data policy requires confirming redistribution rights before public commit. See `data/interim/indiccmix_candidates/README.md`.
+- Added 20,000 synthetic Punjabi-Hindi candidate rows and 20,000 synthetic Marathi-Hindi candidate rows as four CSV shards per category. Rows are marked synthetic and unreviewed, with group IDs for split safety.
+- No rows are approved. Category counts are not evidence of language correctness. Hindi/Marathi and Bengali/Assamese require language-level validation; synthetic data requires naturalness and duplicate audits.
