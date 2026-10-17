@@ -1,0 +1,29 @@
+category,label,target_rows,candidate_rows_known_locally,approved_rows,status
+English-only,en-IN,20000,20000,0,candidate pool exists; label and quality review pending
+Hindi-only Devanagari,hi-IN,20000,20000,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; zero newly approved rows
+Hindi-English Hinglish mixed-script,hi-IN,20000,20000,0,COMI-LINGUA candidates exist; IndicCMix notebook added but not run; synthetic/translation-derived rows require review
+Punjabi-only,pa-IN,20000,20000,0,IndicCorpV2 selected for streamed candidate collection; existing grammar-correction seed is narrow-domain
+Punjabi-Hindi,pa-IN,20000,20000,0,synthetic candidates exist; audit and human review required
+Punjabi-English mixed-script,pa-IN,20000,20000,0,IndicCMix notebook added but not run; strict native-script+Latin gate; review required
+Punjabi-Hindi-English,pa-IN,20000,0,0,not collected/verified
+Bengali-only,bn-IN,20000,20000,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
+Bengali-English mixed-script,bn-IN,20000,20000,0,IndicCMix notebook added but not run; strict native-script+Latin gate; Assamese/Bengali language identity needs review
+Gujarati-only,gu-IN,20000,20000,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
+Gujarati-English mixed-script,gu-IN,20000,20000,0,IndicCMix notebook added but not run; strict native-script+Latin gate; review required
+Kannada-only,kn-IN,20000,20000,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
+Kannada-English mixed-script,kn-IN,20000,20000,0,IndicCMix notebook added but not run; strict native-script+Latin gate; review required
+Malayalam-only,ml-IN,20000,20000,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
+Malayalam-English mixed-script,ml-IN,20000,20000,0,IndicCMix notebook added but not run; strict native-script+Latin gate; review required
+Marathi-only,mr-IN,20000,20000,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
+Marathi-English mixed-script,mr-IN,20000,20000,0,IndicCMix notebook added but not run; strict native-script+Latin gate; review required
+Marathi-Hindi,mr-IN,20000,20000,0,synthetic generation planned; not verified
+Telugu-only,te-IN,20000,20000,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
+Telugu-English mixed-script,te-IN,20000,20000,0,IndicCMix notebook added but not run; strict native-script+Latin gate; review required
+Assamese-only,as-IN,20000,20000,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run; script range overlaps Bengali
+Assamese-English mixed-script,as-IN,20000,20000,0,IndicCMix notebook added but not run; strict native-script+Latin gate; Bengali/Assamese identity needs review
+Tamil-only,ta-IN,20000,20000,0,IndicCorpV2 selected for streamed candidate collection; notebook added but not run
+Tamil-English mixed-script,ta-IN,20000,20000,0,IndicCMix notebook added but not run; strict native-script+Latin gate; review required
+Unsupported-language-only,none,10000,10000,0,diverse unsupported-language source subsets not yet collected
+Unsupported-language-English,none,10000,10000,0,IndicCMix Odia-English candidate subset can seed none; notebook not run; strict native-script+Latin gate and label review required
+
+# Note: candidate_rows_known_locally reflects the 2026-10-17 Colab IndicCMix candidate run; all approved_rows remain 0. Candidate labels/quality are unreviewed. Punjabi-Hindi and Marathi-Hindi synthetic files are committed as unreviewed candidate shards.

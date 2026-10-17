@@ -1,0 +1,37 @@
+{
+  "generator": "synthetic_template_generator_v1",
+  "generated_on": "2026-10-17",
+  "status": "synthetic_unreviewed",
+  "rows_per_category": 20000,
+  "groups_per_category": 5000,
+  "variants_per_group": 4,
+  "categories": [
+    {
+      "category": "punjabi_hindi",
+      "label": "pa-IN",
+      "files": [
+        "punjabi_hindi_synthetic_20000_part1_of_4.csv",
+        "punjabi_hindi_synthetic_20000_part2_of_4.csv",
+        "punjabi_hindi_synthetic_20000_part3_of_4.csv",
+        "punjabi_hindi_synthetic_20000_part4_of_4.csv"
+      ]
+    },
+    {
+      "category": "marathi_hindi",
+      "label": "mr-IN",
+      "files": [
+        "marathi_hindi_synthetic_20000_part1_of_4.csv",
+        "marathi_hindi_synthetic_20000_part2_of_4.csv",
+        "marathi_hindi_synthetic_20000_part3_of_4.csv",
+        "marathi_hindi_synthetic_20000_part4_of_4.csv"
+      ]
+    }
+  ],
+  "warnings": [
+    "Template-generated synthetic text; not human-authored and not independently reviewed.",
+    "All variants with the same group_id must remain in the same split.",
+    "Marathi and Hindi both use Devanagari; lexical language review is required.",
+    "Punjabi-Hindi uses pa-IN per repository label contract; Marathi-Hindi uses mr-IN per dataset plan.",
+    "Do not use synthetic rows as independent test data."
+  ]
+}

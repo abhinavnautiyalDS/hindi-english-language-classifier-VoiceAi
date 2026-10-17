@@ -1,0 +1,123 @@
+{
+  "dataset_name": "multilingual_language_classifier_candidates_v1",
+  "source": "ai4bharat/IndicCMix candidate pool",
+  "seed": 20261017,
+  "label_contract": {
+    "hi-IN": "Hindi-only and Hindi-English mixed-script candidates",
+    "en-IN": "English-only candidates",
+    "none": "all other supported/unsupported language categories"
+  },
+  "total_rows": 100000,
+  "split_rows": {
+    "train": 79923,
+    "validation": 10000,
+    "test": 10077
+  },
+  "label_counts_by_split": {
+    "test": {
+      "en-IN": 1993,
+      "hi-IN": 4084,
+      "none": 4000
+    },
+    "train": {
+      "en-IN": 15960,
+      "hi-IN": 31963,
+      "none": 32000
+    },
+    "validation": {
+      "en-IN": 2047,
+      "hi-IN": 3953,
+      "none": 4000
+    }
+  },
+  "category_counts_by_split": {
+    "test|assamese_english_mixed_script": 200,
+    "test|assamese_only": 200,
+    "test|bengali_english_mixed_script": 200,
+    "test|bengali_only": 200,
+    "test|english_only": 1993,
+    "test|gujarati_english_mixed_script": 200,
+    "test|gujarati_only": 200,
+    "test|hindi_english_mixed_script": 2050,
+    "test|hindi_only": 2034,
+    "test|kannada_english_mixed_script": 200,
+    "test|kannada_only": 200,
+    "test|malayalam_english_mixed_script": 200,
+    "test|malayalam_only": 200,
+    "test|marathi_english_mixed_script": 200,
+    "test|marathi_only": 200,
+    "test|punjabi_english_mixed_script": 200,
+    "test|punjabi_only": 200,
+    "test|tamil_english_mixed_script": 200,
+    "test|tamil_only": 200,
+    "test|telugu_english_mixed_script": 200,
+    "test|telugu_only": 200,
+    "test|unsupported_language_english_mixed_script": 200,
+    "test|unsupported_language_only": 200,
+    "train|assamese_english_mixed_script": 1600,
+    "train|assamese_only": 1600,
+    "train|bengali_english_mixed_script": 1600,
+    "train|bengali_only": 1600,
+    "train|english_only": 15960,
+    "train|gujarati_english_mixed_script": 1600,
+    "train|gujarati_only": 1600,
+    "train|hindi_english_mixed_script": 15973,
+    "train|hindi_only": 15990,
+    "train|kannada_english_mixed_script": 1600,
+    "train|kannada_only": 1600,
+    "train|malayalam_english_mixed_script": 1600,
+    "train|malayalam_only": 1600,
+    "train|marathi_english_mixed_script": 1600,
+    "train|marathi_only": 1600,
+    "train|punjabi_english_mixed_script": 1600,
+    "train|punjabi_only": 1600,
+    "train|tamil_english_mixed_script": 1600,
+    "train|tamil_only": 1600,
+    "train|telugu_english_mixed_script": 1600,
+    "train|telugu_only": 1600,
+    "train|unsupported_language_english_mixed_script": 1600,
+    "train|unsupported_language_only": 1600,
+    "validation|assamese_english_mixed_script": 200,
+    "validation|assamese_only": 200,
+    "validation|bengali_english_mixed_script": 200,
+    "validation|bengali_only": 200,
+    "validation|english_only": 2047,
+    "validation|gujarati_english_mixed_script": 200,
+    "validation|gujarati_only": 200,
+    "validation|hindi_english_mixed_script": 1977,
+    "validation|hindi_only": 1976,
+    "validation|kannada_english_mixed_script": 200,
+    "validation|kannada_only": 200,
+    "validation|malayalam_english_mixed_script": 200,
+    "validation|malayalam_only": 200,
+    "validation|marathi_english_mixed_script": 200,
+    "validation|marathi_only": 200,
+    "validation|punjabi_english_mixed_script": 200,
+    "validation|punjabi_only": 200,
+    "validation|tamil_english_mixed_script": 200,
+    "validation|tamil_only": 200,
+    "validation|telugu_english_mixed_script": 200,
+    "validation|telugu_only": 200,
+    "validation|unsupported_language_english_mixed_script": 200,
+    "validation|unsupported_language_only": 200
+  },
+  "unique_source_groups": 95782,
+  "group_overlap_checks": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  },
+  "exact_text_duplicates_after_processing": 0,
+  "all_rows_candidate_unreviewed": true,
+  "excluded": [
+    "synthetic Punjabi-Hindi and Marathi-Hindi files; excluded pending audit",
+    "call-data evaluation set"
+  ],
+  "important_limitations": [
+    "Labels are inherited from source category and are not human-verified.",
+    "IndicCMix can be template/translation-like and is not natural call audio transcription.",
+    "The none label merges multiple languages; source-language errors must be reviewed.",
+    "This dataset is for initial experiments only, not final evaluation.",
+    "Verify source licensing and redistribution permissions before public redistribution."
+  ]
+}
